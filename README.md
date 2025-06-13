@@ -31,11 +31,18 @@
 
 ## ACTION CREATORS AND PAYLOADS of COMPLEX STATE 
 #### (define how to change the state)
-`**** Remember ****`
-            Actions creators are JavaScript objects that have a type property 
-            They are dispatched to the store with store.dispatch() method.
+`**** Actions creators ****`
+            JS objects with a type property 
+            Creators are dispatched to the store with store.dispatch() method.
 - Action creators change one slice at a time
 - To clarify which state an actions updates its type pattern =`sliceName/actionDescriptor`
+
+              const actionName = (data) {
+                    return {                  //ACTION OBJECT
+                          type: 'sliceName/actionName',
+                          payload: data
+                    }
+              }
 
 - ACTIONS CREATORS CAN ALSO HAVE A:
 
@@ -64,13 +71,31 @@
 - Individual slice reducers are responsible for updating only one slice of the state
 - Result are recombined by a rootReducer --> form a single state object.
   
-      #### REDUCER COMPOSITION PROCESS FOR EACH SLICE REDUCER
-            ==> Each called with incoming action and slice of state
-            ==> Only receives its slice of state
-            ==> Then determines if they need an update or return state unchanged
-            ==> rootReducer reassembles the updated slices by calling all reducers within itself
-- 
+|####|REDUCER COMPOSITION PROCESS FOR EACH SLICE REDUCER|
+|-----|-----|
+| ==> |Each called with incoming action and slice of state|
+| ==> |Only receives its slice of state|
+| ==> |Then determines if they need an update or return state unchanged|
+| ==> |rootReducer reassembles the updated slices by calling all reducers within itself|
+           
+  
+     *********************************************************
+     const rootReducer = (state = {}, action) => {
+         const nextState = {                                   //ALL SLICE REDUCERS CALLED
+               sliceA: sliceAReducer(state.sliceA, action),    //SLICES RECEIVE THEIR
+               sliceB: sliceBReducer(state.sliceB, action)     //OWN SLICE OF STATE VALUES
+             }
+            return nextState;  //REDUCER RETURNS NEXT STATE
+     }
+     **********************************************************
 
+***SWITCH CASES FOR ADDING TO AN ARRAY OR REMOVING FROM AN ARRAY
+- Only the state of the individual slice is needed to change that specific slice
+
+            case 'sliceName1/actionAdd':
+                    return [...state.sliceName1, action.payload];
+            case 'sliceName1/actionRemove':
+                    return arraySliceName1.filter(element=>element.id !== action.payload.id);
 
 
 
