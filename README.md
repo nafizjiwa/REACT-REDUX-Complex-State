@@ -10,7 +10,8 @@
       - Reducers execute the state changes
       - Connecting the Redux store to React components.
     
-## Slices
+## Slices 
+#### (define an Apps Inital State)
 - Top-Level `state properties`      `Slice=StateProperty`
 - Features of an application
 - Can be data values, array of object, or strings
@@ -28,16 +29,18 @@
                                                  ---> STRING
             };
 
-## ACTIONS AND PAYLOADS of COMPLEX STATE
+## ACTION CREATORS AND PAYLOADS of COMPLEX STATE 
+#### (define how to change the state)
 `**** Remember ****`
-            Actions are JavaScript objects that have a type property and are dispatched to the store using the store.dispatch() method.
-- Action change one slice at a time
+            Actions creators are JavaScript objects that have a type property 
+            They are dispatched to the store with store.dispatch() method.
+- Action creators change one slice at a time
 - To clarify which state an actions updates its type pattern =`sliceName/actionDescriptor`
 
-- ACTIONS CAN ALSO HAVE A:
+- ACTIONS CREATORS CAN ALSO HAVE A:
 
-      payload — data passed to the reducer in order to carry out the desired change-of-state
-- For Example an App with a SearchBar would have 2 actions which get dispached to change state when a user input in the SearchBar
+      payload — data passed to the reducer in order to change-of-state
+- For Example an App with a SearchBar can have 2 actions which get dispached to change state whenever a user input in the SearchBar
 
 *** 1. If the user enters a searchTerm of Spaghetti  &emsp;  &emsp; &emsp;   *** 2. If the user clears the search field no data sent but an empty string ' '
 
@@ -47,9 +50,22 @@
             });                                                             // The resulting state: { ..., searchTerm: '' }
             // The resulting state: { ..., searchTerm: 'Spaghetti' }
 
+## IMMUTABLE UPDATES 
+#### (Use a Reducer to Change the State)
+- A Store's reducer is called each time an action is dispatched
+- Rules of a reducer:
+        1. Reducers take in 1.an action 2.a current state and return the next state
+        2. Reducers don't mutate the state they make a copy of the state
+              For arrays and objects with mutable data use a spread operator(...)
 
+## REDUCER COMPOSITION
+- A single reducer to manage every slice of the store's state
+              ==> Follow a pattern --> Reducer Composition
 
- 
+- Individual slice reducers are responsible for updating only one slice of the state
+- Their result are recombined by rootReducer to form a single state object.
+- 
+- 
 
 
 
