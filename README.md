@@ -16,7 +16,7 @@
 - Features of an application
 - Can be data values, array of object, or strings
   
-          state = {                 --> THIS STATE HAS 2 SLICES
+          initialState = {                 --> THIS STATE HAS 2 SLICES
               todos:                            ---> SLICE 1
                [                                ---> ARRAY OF OBJECTS            
                     {                            
@@ -59,12 +59,16 @@
               For arrays and objects with mutable data use a spread operator(...)
 
 ## REDUCER COMPOSITION
-- A single reducer to manage every slice of the store's state
-              ==> Follow a pattern --> Reducer Composition
-
+- For small appications a single reducer can manage every slice of the store's state
+- For large application follow --> Reducer Composition
 - Individual slice reducers are responsible for updating only one slice of the state
-- Their result are recombined by rootReducer to form a single state object.
-- 
+- Result are recombined by a rootReducer --> form a single state object.
+  
+      #### REDUCER COMPOSITION PROCESS FOR EACH SLICE REDUCER
+            ==> Each called with incoming action and slice of state
+            ==> Only receives its slice of state
+            ==> Then determines if they need an update or return state unchanged
+            ==> rootReducer reassembles the updated slices by calling all reducers within itself
 - 
 
 
