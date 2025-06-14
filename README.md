@@ -100,8 +100,28 @@
             return arraySliceName1.filter(element=>element.id !== action.payload.id);
      
 
+## combineREDUCERS
+- CombineReducer s facilitates the steps of the rootReducer
+  1.#### **CALLS ALL SLICE REDUCERS WITH THEIR SLICE OF STATE**
+  2.#### **STORES THE RETURN STATE IN A NEW OBJECT**
+  3.#### **NEW STATE IS RETURNED**
+    
+    const rootReducer = (state = {}, action) => {
+       const nextState = { 
+         todos: todosReducer(state.todos, action),
+       };   
+       return nextState;
+     };
+     const store = createStore(rootReducer);
+- USING the combineReducers where it accepts the reducers object and returns a rootReducer function
+  
+      const reducers = {
+          todos: todosReducer,
+      };
+      const rootReducer = combineReducers(reducers);
+        //STORE OBJECT CREATED BY PASSING IN rootREDUCER
+      const store = createStore(rootReducer); 
 
-## COMBINEREDUCERS
 
 
 
