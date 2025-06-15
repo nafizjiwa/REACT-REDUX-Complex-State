@@ -1,4 +1,4 @@
-# REACT-REDUX-Complex-State
+# REACT-REDUX-For-Complex-State
 
 ## Strategies for Complex State
 - A REDUX store helps centralize, organize features and data. --> Complex Store State
@@ -156,4 +156,15 @@
 
       //THIRD & FOURTH, PASS REDUCER OBJECT INTO COMBINEREDUCERS THEN CREATE STORE
       const store = createStore(combineReducers(reducers))
+  
+## PASSING STORE DATE THROUGH FILE STRUCTURE FOR REDUX
 
+- The ideal file structure with React Components and Slice files is to keep the React Commponent and the Slice file in the same folder.
+- React Component renders the data
+- Slice file manages the data
+- In React applications, top-level components, like App.js, will render each feature-component and pass any data needed by those components as prop values.
+- Redux applications, the data passed to each feature-component
+            - Slice of stores state to render
+                    state.sliceName can be passed to <Component />
+            - store.dispatch method to trigger state changes with action
+                          <Component /> will dispatch setComponent() actions.
