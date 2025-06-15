@@ -11,12 +11,11 @@
       - Connecting the Redux store to React components.
     
 ## Slices 
-#### (define an Apps Inital State)
+#### (defines an Apps Inital State)
 - Top-Level `state properties`      `Slice=StateProperty`
-- Features of an application
 - Can be data values, array of object, or strings
   
-          initialState = {                 --> THIS STATE HAS 2 SLICES
+        const initialState = {                 --> THIS STATE HAS 2 SLICES
               todos:                            ---> SLICE 1
                [                                ---> ARRAY OF OBJECTS            
                     {                            
@@ -116,15 +115,45 @@
 - CombineReducers, avoids the manual creation of the rootReducer function
 - CombineReducer accepts the reducers object and returns a rootReducer function which contains each slice state and action
 
-        //reducer object contains all slice reducers
+              //REDUCER OBJECT CONTAINS ALL SLICE REDUCERS UPDATING ALL SLICES OF THE STORE'S STATE
       const reducers = {      2.
-          todos: todosReducer, 1.  //keyName = name of slice: ReducerName//
+          todos: todosReducer, 1.  //keyName = SliceName: SliceReducerName//
       };   
       const rootReducer = combineReducers(reducers);
       const store = createStore(rootReducer);
          //STORE OBJECT CREATED BY PASSING IN rootREDUCER
   
-##### When an Action is dispatch --> arrives at store --> rootReducer is executed --> which calls all slice reducers --> the action and slice of state is passed down appropriate slice
+### When an Action is dispatched --> arrives at store --> rootReducer is executed which calls all slice reducers --> the action and slice of state is passed down appropriate slice
 
+## FILE STRUCTURE FOR REDUX
 
+- For each state put its action creators and slice reducer in its own sub file which can be imported into the store.js
+
+            src/
+            |-- index.js
+            |-- app/
+                |-- store.js
+            |-- features/
+                |-- featureA/
+                    |-- featureASlice.js
+                |-- featureB/
+                    |-- featureBSlice.js
+
+- So the in the store.js file:
+
+      import { createStore, combineReducers } from 'redux';
+
+      // FIRST, IMPORT SLICE REDUCER
+      import { sliceReducerA } from '../featuresFile/sliceAReducer.js';
+      import { sliceReducerB } from '../featuresFile/sliceBReducer.js';
+
+      //SECOND, CONSTRUCT THE REDUCERS OBJECT
+      const reducers = {
+        // Add the slice properties here
+         sliceA: sliceAReducer,
+         sliceB: sliceBReducer   
+      }
+
+      //THIRD & FOURTH, PASS REDUCER OBJECT INTO COMBINEREDUCERS THEN CREATE STORE
+      const store = createStore(combineReducers(reducers))
 
