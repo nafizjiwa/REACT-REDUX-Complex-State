@@ -157,14 +157,19 @@
       //THIRD & FOURTH, PASS REDUCER OBJECT INTO COMBINEREDUCERS THEN CREATE STORE
       const store = createStore(combineReducers(reducers))
   
-## PASSING STORE DATE THROUGH FILE STRUCTURE FOR REDUX
+## PASSING STORE DATA THROUGH FILE STRUCTURE FOR REDUX
 
-- The ideal file structure with React Components and Slice files is to keep the React Commponent and the Slice file in the same folder.
-- React Component renders the data
-- Slice file manages the data
-- In React applications, top-level components, like App.js, will render each feature-component and pass any data needed by those components as prop values.
-- Redux applications, the data passed to each feature-component
-            - Slice of stores state to render
-                    state.sliceName can be passed to <Component />
-            - store.dispatch method to trigger state changes with action
-                          <Component /> will dispatch setComponent() actions.
+- The ideal file structure with React Components and Slice file's is to keep in the same folder.</br>
+- React Component renders the data</br>
+- Slice files manages the data</br>
+- React applications, top-level components, like App.js,</br>
+            1. Render Components and </br>
+            2. Pass data down to Components as props.</br>
+- Redux Applications, the data is passed to feature Component</br>
+            1.The Slices of store states to render
+              - state.sliceName can be passed to <SliceNameComponent /></br>
+            2.The store.dispatch method to trigger state changes with actions
+              - <Component /> will dispatch setComponent() actions.</br>
+- To pass the store's current state and its dispatch method to the <App /> component</br>
+- First, import store to the index.js file
+- second, Pass the store's state to <App /> as a prop state
