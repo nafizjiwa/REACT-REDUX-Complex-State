@@ -190,17 +190,17 @@
 
 - 1st, Import feature components to App.js
   
-            import ../feature/sliceName/sliceNameFeatureComponent.js
-- 2nd, Render each feature component by passing the slice of state and dispatch method as props.
+            import ../feature/sliceNameFolder/sliceNameFeatureComponent.js
+- 2nd, Render each feature component by passing the slice of state and dispatch method as PROPS.
 
-            impo
-            <section>
+            import featureComponent from './file-path';
+            <div>
               <h2>All Recipes</h2>
-              <AllRecipes
-                allRecipes={visibleAllRecipes} 
-                dispatch={dispatch}
+              <FeatureComponent   //PASSING PROPS
+                stateName={visibleAllRecipes} 
+                dispatch={dispatch_method_from_store}
               />
-            </section>
+            </div>
             
               
                   
