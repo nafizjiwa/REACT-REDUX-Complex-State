@@ -139,7 +139,7 @@
                 |-- featureB/
                     |-- featureBSlice.js
 
-- So the in the store.js file:
+- So in the store.js file:
 
       import { createStore, combineReducers } from 'redux';
 
@@ -157,19 +157,49 @@
       //THIRD & FOURTH, PASS REDUCER OBJECT INTO COMBINEREDUCERS THEN CREATE STORE
       const store = createStore(combineReducers(reducers))
   
-## PASSING STORE DATA THROUGH FILE STRUCTURE FOR REDUX
-
-- The ideal file structure with React Components and Slice file's is to keep in the same folder.</br>
-- React Component renders the data</br>
-- Slice files manages the data</br>
+## PASSING STORE DATA THROUGH TOP LEVEL REACT COMPONENT
+- React Components and their Slice file's should be kept in the same folder.</br>
+      - React Component renders the data</br>
+      - Slice files manages the data</br>
 - React applications, top-level components, like App.js,</br>
             1. Render Components and </br>
             2. Pass data down to Components as props.</br>
-- Redux Applications, the data is passed to feature Component</br>
+- Redux Applications, the data is passed to feature Component as:</br>
             1.The Slices of store states to render
               - state.sliceName can be passed to <SliceNameComponent /></br>
             2.The store.dispatch method to trigger state changes with actions
               - <Component /> will dispatch setComponent() actions.</br>
-- To pass the store's current state and its dispatch method to the <App /> component</br>
-- First, import store to the index.js file
-- second, Pass the store's state to <App /> as a prop state
+
+  #### TO PASS CURRENT STATE AND ITS DISPATCH TO <App />: </br>
+  1. Import store to the index.js file
+      - ./app/store.js
+      - ./ means 'starting from the directory of this file...' where "this file" is index.js.
+  2. Pass the store's state to <App /> as a prop state
+      - Get current state of store --> store.getState()
+      - Render <App /> passing state as a prop
+      - <App state={get current state of store } />
+  3. For App to render App needs a dispatch method
+      - Pass store.dispatch to <App /> as prop dispatch
+            <App dispatch={store.dispatch} /> not store.dispatch()
+  4. Subscribe the render function to changes to the store so the whole <App /> component can re-renders whenever changes in the store occcur.
+       - To subsribe a method to changes to the store: store.subscribe(FunctionName)
+       - --> store.subscribe(renderfunction).
+
+## USING STORE DATA WITHIN FEATURE COMPONENTS
+- State and store.dispatch are passed to <App /> then dispatch and slices of state are passed to feature components AS PROPS.
+
+        - 1st, Import feature components to App.js
+                    ../feature/featureName/featureName.js
+        - 2nd, Render each feature component and pass slice of state and dispatch as props.
+        - 3rd, Each feature should
+              - extract state and dispatch props
+              - Render component using date from the slice of state
+              - Import action creators from slice files
+              - Dispatch action in response to user inputs
+
+
+
+
+
+
+ 
