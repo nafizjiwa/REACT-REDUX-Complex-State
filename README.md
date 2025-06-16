@@ -186,13 +186,26 @@
        - --> store.subscribe(renderfunction).
 
 ## USING STORE DATA WITHIN FEATURE COMPONENTS
-- State and store.dispatch are passed to <App /> then App passed dispatch and slices of state to feature components AS PROPS.
+- State and store.dispatch are passed to <App /> then App passes dispatch method and slices of store's state to feature components `AS PROPS`.
 
 - 1st, Import feature components to App.js
   
-                    ../feature/featureName/featureName.js
-- 2nd, Render each feature component and pass slice of state and dispatch as props.
-- 3rd, Each feature should
+            import ../feature/sliceName/sliceNameFeatureComponent.js
+- 2nd, Render each feature component by passing the slice of state and dispatch method as props.
+
+            impo
+            <section>
+              <h2>All Recipes</h2>
+              <AllRecipes
+                allRecipes={visibleAllRecipes} 
+                dispatch={dispatch}
+              />
+            </section>
+            
+              
+                  
+
+- 3rd, In each feature Component
               - extract state and dispatch props
               - Render component using date from the slice of state
               - Import action creators from slice files
