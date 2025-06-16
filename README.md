@@ -197,8 +197,16 @@
               - Import action creators from slice files
               - Dispatch action in response to user inputs
 
-
-
+The action.payload property holds data for the reducer to caryy ou an action.</br>
+The spread syntax (...) and array methods (.map(), .slice(), .filter()) are used to immutably update the state of a complex app.</br>
+Reducer composition is pattern for managing a Redux store with multiple slices.</br>
+The root reducer delegates actions to slice reducers to update their own state in the store then reassembles the slices into a new state object.</br>
+combineReducers() is a method accepts a collection of reducer functions and returns a rootReducer that implements the reducer composition pattern.</br>
+Slice reducers are often written in separate files in Redux known as Redux Ducks.</br>
+The store is passed from (index.js) through the main <App /> component as a prop. </br>
+The <App /> component passes the slices of the store’s state to its sub-components.
+“prop drilling” or “prop threading” because they are “threaded” through the top-level component -> presentational components. This isn’t ideal, considering that the top-level component doesn’t make use of those props.</br>
+Redux Toolkit to avoid “prop threading” </br>
 
 
 
