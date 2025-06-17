@@ -55,11 +55,11 @@
             // The resulting state: { ..., searchTerm: 'Spaghetti' }
 
 ## IMMUTABLE UPDATES 
-#### (Use a Reducer to Change the State)
-- When an action is dispatched a REDUCER is called:
-        1. A Reducers take in 1.an action & 2.a current state --> the next state
-        2. Reducers don't mutate the state they make a copy of the state
-              For arrays and objects with mutable data use a spread operator(...)
+#### (Reducers are Functions Which Decide How to Change the State)
+- A Dispatched action calles a REDUCER:</br>
+        1. The Reducers take in AN ACTION AND A CURRENT STATE --> the next state</br>
+        2. Reducers make a copy of the state (don't mutate state)</br>
+              For arrays and objects with mutable data use a spread operator(...)</br>
 
 ## REDUCER COMPOSITION
 - For small appications a single reducer can manage every slice of the store's state
