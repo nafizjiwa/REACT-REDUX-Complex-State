@@ -43,7 +43,7 @@
 
 - ACTIONS CREATORS CAN ALSO HAVE A:
 
-      payload — additionsl data passed to the reducer to change the state
+      payload — additional data passed to the reducer to change the state
 - For Example an App with a SearchBar componenr can have 2 actions which get dispached to change state of that searchbar whenever a user input in the SearchBar
 
 *** 1. If the user enters a searchTerm of Spaghetti  &emsp;  &emsp; &emsp;   *** 2. If the user clears the search field no data sent but an empty string ' '
@@ -56,24 +56,22 @@
 
 ## IMMUTABLE UPDATES 
 #### (Use a Reducer to Change the State)
-- A Store's reducer is called each time an action is dispatched
-- Rules of a reducer:
-        1. Reducers take in 1.an action 2.a current state and return the next state
+- When an action is dispatched a REDUCER is called:
+        1. A Reducers take in 1.an action & 2.a current state --> the next state
         2. Reducers don't mutate the state they make a copy of the state
               For arrays and objects with mutable data use a spread operator(...)
 
 ## REDUCER COMPOSITION
 - For small appications a single reducer can manage every slice of the store's state
-- For large application follow --> Reducer Composition
-- Individual slice reducers are responsible for updating only one slice of the state
-- Result are recombined by a rootReducer --> form a single state object.
+- For large application follow --> Use Reducer Composition
+- Multiple slice reducers responsible for updating only one slice/part of the state
+- Multiple Reducers results are recombined by a rootReducer --> A single state object.
   
 |####|REDUCER COMPOSITION PROCESS FOR EACH SLICE REDUCER|
 |-----|-----|
-| ==> |Each called with incoming action and slice of state|
-| ==> |Only receives its slice of state|
-| ==> |Then determines if they need an update or return state unchanged|
-| ==> |rootReducer reassembles the updated slices by calling all reducers within itself|
+| ==> |Each called with incoming action and IT'S OWN slice of state|
+| ==> |Then EACH REDUCER determines if they need an update or returns state unchanged|
+| ==> |rootReducer calls all reducers and reassembles the updated slices|
            
   
      *********************************************************
@@ -231,7 +229,7 @@
 |Review Notes|
 |----|
 |Action Creator are functions that create and return actions (an object).. the object has 2 props type & payload|
-|Reducers handle the action and update state|
+|Reducers determines how a state changes based on the action it receives|
 |An action.type is the type action Eg.'Add a To Do'|
 |An action.payload is the action the creator carries out. Eg. "Buy groceries"|
 |store.dispatch(action) accepts an action and sends the action to the store's reducer|
