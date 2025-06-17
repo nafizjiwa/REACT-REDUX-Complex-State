@@ -243,23 +243,27 @@
 |***Pass data down to presentational component***|
 |Pass store to Presentational Components|
 |What is Passed? Current State and dispatch Method|
-|<App state={store.getState} dispatch={store.dispatch}/>|
+|\<App currentState={store.getState} dispatch={store.dispatch}/>|
 |***When States change the component needs to re-render with most up-dated data***|
 |Subscribe render or render function to changes to the state of the store|
 |store.subscribe(listener_function) accepts a listener|
 |store.subscribe(render) listens when state has changed and updates its data|
-|App.js renders all slices of state and their dispatch methods as above|
-| Import slice Component thenRender Component|
-|const App = (props) => {
-|             const { state, dispatch } = props; |
-|             return (|
-|                   <RenderedSliceNameComponent      |
-|                        sliceName={state.sliceName}|
-|                        otherSlice= {state.otherSlice}|
-|                        dispatch={dispatch}|
-|                        />|
-|)|
-|}|
+|App.js renders all slices of state and their dispatch methods as above: Eg.|
+|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+ 
+            Import slice Component thenRender Component
+            const App = (props) => {
+                  const { state, dispatch } = props; 
+                         return (
+                               <RenderedSliceNameComponent      
+                                    sliceName={state.sliceName}
+                                    otherSlice= {state.otherSlice}
+                                    dispatch={dispatch}
+                                    />
+                        )
+            }
+|Review Notes|
+|----|
 |store.dispatch(action) accepts an action and sends the action to the store's reducer|
 |Action Creator are functions that create and return actions (an object).. the object has 2 props type & payload|
 |Reducers determines how a state changes based on the action it receives|
