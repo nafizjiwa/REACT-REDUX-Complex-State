@@ -246,6 +246,7 @@
 |Redux Toolkit helps avoid “prop threading” |
 |store.subscribe(listener_function) accepts a listener|
 |When an action is dispatched to the store all subscribed listeners are executed|
+|feature-based pattern - Organize code so each feature (create a todo, cart) has its own folder not organized by types (actions, or components)|
 
 
 
