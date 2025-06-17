@@ -205,7 +205,8 @@
               />
             </App>
             
-- 3rd, EXTRACT PROPS: slice of state and dispatch method 
+- 3rd, EXTRACT PROPS: slice of state and dispatch method
+
               const MyComponent = ({state, dispatch} or props) => {
                         or const { state, dispatch } = props
                     // MyComponent code
@@ -229,13 +230,17 @@
       - Here the dispatch method has been passed to component so don't need store.dispatch only dispatch
 
             dispatch(actionCreator(payload));
+|Review Notes|
+|----|
+|action.payload holds data for the reducer to caryy ouT an action|
+|Spread syntax (...) and array methods (.map(), .slice(), .filter()) are used to immutably update the state of a complex app|
+|The Reducer composition pattern manages a Redux store with multiple slices|
+|root reducer delegates actions to slice reducers to update their own state in the store then reassembles the slices into a new state object|
+|combineReducers() method accepts a collection of reducer functions and returns a rootReducer|
 
 
-The action.payload property holds data for the reducer to caryy ou an action.</br>
-The spread syntax (...) and array methods (.map(), .slice(), .filter()) are used to immutably update the state of a complex app.</br>
-Reducer composition is pattern for managing a Redux store with multiple slices.</br>
-The root reducer delegates actions to slice reducers to update their own state in the store then reassembles the slices into a new state object.</br>
-combineReducers() is a method accepts a collection of reducer functions and returns a rootReducer that implements the reducer composition pattern.</br>
+
+
 Slice reducers are often written in separate files in Redux known as Redux Ducks.</br>
 The store is passed from (index.js) through the main <App /> component as a prop. </br>
 The <App /> component passes the slices of the store’s state to its sub-components.
