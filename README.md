@@ -1,11 +1,9 @@
 # REACT-REDUX-For-Complex-State
 
 ## Strategies for Complex State
-- A REDUX store helps centralize, organize features and data. --> Complex Store State
-- Redux is suited for complex applications with features each with state data to manage.
-- Strategies can help manage a complex store state (State Management).
-- REDUX one-way data flow --> State → View → Actions → State → View
-- To design a store’s state structure we need to understand:
+- A REDUX store is ideal for managing Complex data state (State Management)
+- REDUX: one-way data flow --> State → View → Actions → State → View
+- WHEN designng a store’s state we need:
       - Action creators describe the state changes
       - Reducers execute the state changes
       - Connecting the Redux store to React components.
@@ -232,8 +230,9 @@
             dispatch(actionCreator(payload));
 |Review Notes|
 |----|
-|Action Creator a function that returns an (action) object with 2 properties type and payload|
-|stor.dispatch(action) accepts an action and sends the action to the store's reducer to update state|
+|Action Creator a function that returns an action object with 2 properties type and payload|
+|store.dispatch(action) accepts an action and sends the action to the store's reducer|
+|Reducers handle th action and update state|
 |action.payload holds data for the reducer to carry ouT an action|
 |Spread syntax (...) and array methods (.map(), .slice(), .filter()) are used to immutably update the state of a complex app|
 |The Reducer composition pattern manages a Redux store with multiple slices|
