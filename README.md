@@ -233,7 +233,7 @@
 |Review Notes|
 |----|
 |Action Creator a function that returns an (action) object with 2 properties type and payload|
-|dispatch(action) accepting an action triggers a state change by calling reducer|
+|stor.dispatch(action) accepts an action and sends the action to the store's reducer to update state|
 |action.payload holds data for the reducer to carry ouT an action|
 |Spread syntax (...) and array methods (.map(), .slice(), .filter()) are used to immutably update the state of a complex app|
 |The Reducer composition pattern manages a Redux store with multiple slices|
