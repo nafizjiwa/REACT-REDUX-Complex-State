@@ -230,19 +230,22 @@
             dispatch(actionCreator(payload));
 |Review Notes|
 |----|
-|Action Creator a function that returns an action object with 2 properties type and payload|
-|store.dispatch(action) accepts an action and sends the action to the store's reducer|
+|Action Creator are functions that create and return action (object).. the object has 2 props type & payload|
 |Reducers handle th action and update state|
-|action.payload holds data for the reducer to carry ouT an action|
+|action.type is the type action 'Add a To Do'|
+|action.payload is the action of action creator carries out. "Buy groceries"|
+|store.dispatch(action) accepts an action and sends the action to the store's reducer|
 |Spread syntax (...) and array methods (.map(), .slice(), .filter()) are used to immutably update the state of a complex app|
 |The Reducer composition pattern manages a Redux store with multiple slices|
 |root reducer delegates actions to slice reducers to update their own state in the store then reassembles the slices into a new state object|
-|combineReducers() method accepts a collection of reducer functions and returns a rootReducer|
-|Redux Slice reducers are written in separate files known as Redux Duck|
+|combineReducers() method accepts all reducer functions and returns a rootReducer|
+|Redux Slice reducers handles actions and updates the data for a given slice|
 |The store is passed from (index.js) through the main <App /> component as a prop|
 |The <App /> component passes the slices of the store’s state to its sub-components|
 |“prop drilling” or “prop threading” - props are “threaded” through the top-level component -> presentational components.|
 |Redux Toolkit helps avoid “prop threading” |
+|store.subscribe(listener_function) accepts a listener|
+|When an action is dispatched to the store all subscribed listeners are executed|
 
 
 
