@@ -230,10 +230,10 @@
             dispatch(actionCreator(payload));
 |Review Notes|
 |----|
-|Action Creator are functions that create and return action (object).. the object has 2 props type & payload|
-|Reducers handle th action and update state|
-|action.type is the type action 'Add a To Do'|
-|action.payload is the action of action creator carries out. "Buy groceries"|
+|Action Creator are functions that create and return actions (an object).. the object has 2 props type & payload|
+|Reducers handle the action and update state|
+|An action.type is the type action Eg.'Add a To Do'|
+|An action.payload is the action the creator carries out. Eg. "Buy groceries"|
 |store.dispatch(action) accepts an action and sends the action to the store's reducer|
 |Spread syntax (...) and array methods (.map(), .slice(), .filter()) are used to immutably update the state of a complex app|
 |The Reducer composition pattern manages a Redux store with multiple slices|
