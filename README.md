@@ -237,15 +237,12 @@
 |The Reducer composition pattern manages a Redux store with multiple slices|
 |root reducer delegates actions to slice reducers to update their own state in the store then reassembles the slices into a new state object|
 |combineReducers() method accepts a collection of reducer functions and returns a rootReducer|
+|Redux Slice reducers are written in separate files known as Redux Duck|
+|The store is passed from (index.js) through the main <App /> component as a prop|
+|The <App /> component passes the slices of the store’s state to its sub-components|
+|“prop drilling” or “prop threading” - props are “threaded” through the top-level component -> presentational components.|
+|Redux Toolkit helps avoid “prop threading” |
 
-
-
-
-Slice reducers are often written in separate files in Redux known as Redux Ducks.</br>
-The store is passed from (index.js) through the main <App /> component as a prop. </br>
-The <App /> component passes the slices of the store’s state to its sub-components.
-“prop drilling” or “prop threading” because they are “threaded” through the top-level component -> presentational components. This isn’t ideal, considering that the top-level component doesn’t make use of those props.</br>
-Redux Toolkit to avoid “prop threading” </br>
 
 
 
