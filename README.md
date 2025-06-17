@@ -100,8 +100,8 @@
 ## combineREDUCERS
 - CombineReducer s creates the functions of the rootReducer</br>
   #### 1.CALLS ALL SLICE REDUCERS WITH THEIR SLICE OF STATE</br>
-  #### 2.STORES THE RETURN STATE IN A NEW OBJECT</br>
-  #### 3.NEW STATE IS RETURNED</br>
+  #### 2.STORES THE NEW STATE IN A NEW OBJECT</br>
+  #### 3.RETURNS A NEW STATE</br>
     
           const rootReducer = (state = {}, action) => {
              const nextState = {  2.
