@@ -96,7 +96,7 @@
      
 
 ## combineREDUCERS
-- CombineReducer s creates the functions of the rootReducer</br>
+- CombineReducers creates the functions of the rootReducer</br>
   #### 1.CALLS ALL SLICE REDUCERS WITH THEIR SLICE OF STATE</br>
   #### 2.STORES THE NEW STATE IN A NEW OBJECT</br>
   #### 3.RETURNS A NEW STATE</br>
@@ -228,21 +228,30 @@
             dispatch(actionCreator(payload));
 |Review Notes|
 |----|
+|The store is passed from (index.js) through the main <App /> component as a prop|
+|store.subscribe(listener_function) accepts a listener|
+|store.dispatch(action) accepts an action and sends the action to the store's reducer|
+|Store Set Up Requires:|
+|Importing functions createStore(), combineReducers() and rootReducer
+|Importing slice reducers from their feature folders feature/featureSliceName.js name|
+|Then Combine reducers object with combineReducers({...reducersObject})|
+|CombineReducer returns a rootReducer function with each slice state and action|
+|Reducer object contains all slices and their reducer|
+|Next, create a store using combineReducers (contains all the slice of states)|
+|export const store = createStore(combineReducers({
+  sliceA: sliceAReducer, sliceB: sliceBReducer,}));|
 |Action Creator are functions that create and return actions (an object).. the object has 2 props type & payload|
 |Reducers determines how a state changes based on the action it receives|
 |An action.type is the type action Eg.'Add a To Do'|
 |An action.payload is the action the creator carries out. Eg. "Buy groceries"|
-|store.dispatch(action) accepts an action and sends the action to the store's reducer|
 |Spread syntax (...) and array methods (.map(), .slice(), .filter()) are used to immutably update the state of a complex app|
 |The Reducer composition pattern manages a Redux store with multiple slices|
 |root reducer delegates actions to slice reducers to update their own state in the store then reassembles the slices into a new state object|
 |combineReducers() method accepts all reducer functions and returns a rootReducer|
 |Redux Slice reducers handles actions and updates the data for a given slice|
-|The store is passed from (index.js) through the main <App /> component as a prop|
 |The <App /> component passes the slices of the store’s state to its sub-components|
 |“prop drilling” or “prop threading” - props are “threaded” through the top-level component -> presentational components.|
 |Redux Toolkit helps avoid “prop threading” |
-|store.subscribe(listener_function) accepts a listener|
 |When an action is dispatched to the store all subscribed listeners are executed|
 |feature-based pattern - Organize code so each feature (create a todo, cart) has its own folder not organized by types (actions, or components)|
 
