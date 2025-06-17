@@ -187,26 +187,31 @@
 
 ## USING STORE DATA WITHIN FEATURE COMPONENTS
 - State and store.dispatch are passed to <App /> then App passes dispatch method and slices of store's state to feature components `AS PROPS`.
+- JOB OF PRESENTATIONAL COMPONENT IN REDUX:
+            - Render the data of their SLICE OF STATE
+            - Dispatch ACTION in response to user interaction 
 
 - 1st, Import feature components to App.js
   
             import ../feature/sliceNameFolder/sliceNameFeatureComponent.js
-- 2nd, Render each feature component by passing the slice of state and dispatch method as PROPS.
+##### To render data and dispatch actions
+- 2nd, Pass PROPS (slice of state, dispatch method) from App to FeatureComponent.
 
-            import featureComponent from './file-path';
-            <div>
-              <h2>All Recipes</h2>
-              <FeatureComponent   //PASSING PROPS
-                stateName={visibleAllRecipes} 
+            import FeatureComponent from './file-path';
+            <App>
+              <FeatureComponent               //PASSING PROPS
+                stateName={sate.stateSliceName} 
                 dispatch={dispatch_method_from_store}
               />
-            </div>
+            </App>
             
-              
-                  
+- 3rd, Extract slice of state and dispatch props
+              const MyComponent = ({state, dispatch} or props) => {
+                        or const { state, dispatch } = props
+                    // MyComponent code
+                  }
 
-- 3rd, In each feature Component
-              - extract state and dispatch props
+      
               - Render component using date from the slice of state
               - Import action creators from slice files
               - Dispatch action in response to user inputs
