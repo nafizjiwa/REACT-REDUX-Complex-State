@@ -227,12 +227,14 @@
               import { sliceReducer } from './feature/sliceReducerFolder/sliceReducerFile.js';
 
 - 6th, DISPATCH ACTION with the action creator in response to user inputs
-      - Here the dispatch method has been passed to component so don't need store.dispatch only dispatch
+      - When the dispatch method is passed to a component don't call store.dispatch only dispatch
 
             dispatch(actionCreator(payload));
 |Review Notes|
 |----|
-|action.payload holds data for the reducer to caryy ouT an action|
+|Action Creator a function that returns an (action) object with 2 properties type and payload|
+|dispatch(action) accepting an action triggers a state change by calling reducer|
+|action.payload holds data for the reducer to carry ouT an action|
 |Spread syntax (...) and array methods (.map(), .slice(), .filter()) are used to immutably update the state of a complex app|
 |The Reducer composition pattern manages a Redux store with multiple slices|
 |root reducer delegates actions to slice reducers to update their own state in the store then reassembles the slices into a new state object|
