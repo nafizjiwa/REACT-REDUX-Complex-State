@@ -228,10 +228,7 @@
             dispatch(actionCreator(payload));
 |Review Notes|
 |----|
-|The store is passed from (index.js) through the main <App /> component as a prop|
-|store.subscribe(listener_function) accepts a listener|
-|store.dispatch(action) accepts an action and sends the action to the store's reducer|
-|***Store Set Up Requires ***|
+|***Store Set Up Requires***|
 |Importing functions createStore(), combineReducers() and rootReducer
 |Importing slice reducers from their feature folders feature/featureSliceName.js name|
 |Then Combine reducers object with combineReducers({...reducersObject})|
@@ -240,6 +237,30 @@
 |Next, create a store using combineReducers (contains all the slice of states)|
 |export const store = createStore(combineReducers({
   sliceA: sliceAReducer, sliceB: sliceBReducer,}));|
+|***Connect Redux Store to React Component App***|
+|To pass store from (index.js) to main <App /> component as a prop|
+|import { store } from './app/store.js'|
+|***Pass data down to presentational component***|
+|Pass store to Presentational Components|
+|What is Passed? Current State and dispatch Method|
+|<App state={store.getState} dispatch={store.dispatch}/>|
+|***When States change the component needs to re-render with most up-dated data***|
+|Subscribe render or render function to changes to the state of the store|
+|store.subscribe(listener_function) accepts a listener|
+|store.subscribe(render) listens when state has changed and updates its data|
+|App.js renders all slices of state and their dispatch methods as above|
+| Import slice Component thenRender Component|
+|const App = (props) => {
+|             const { state, dispatch } = props; |
+|             return (|
+|                   <RenderedSliceNameComponent      |
+|                        sliceName={state.sliceName}|
+|                        otherSlice= {state.otherSlice}|
+|                        dispatch={dispatch}|
+|                        />|
+|)|
+|}|
+|store.dispatch(action) accepts an action and sends the action to the store's reducer|
 |Action Creator are functions that create and return actions (an object).. the object has 2 props type & payload|
 |Reducers determines how a state changes based on the action it receives|
 |An action.type is the type action Eg.'Add a To Do'|
