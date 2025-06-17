@@ -191,11 +191,11 @@
             - Render the data of their SLICE OF STATE
             - Dispatch ACTION in response to user interaction 
 
-- 1st, Import feature components to App.js
+- 1st, IMPORT feature components to App.js
   
             import ../feature/sliceNameFolder/sliceNameFeatureComponent.js
-##### To render data and dispatch actions
-- 2nd, Pass PROPS (slice of state, dispatch method) from App to FeatureComponent.
+##### TO RENDER DATA AND DISPATCH ACTIONS
+- 2nd, PASS PROPS (slice of state, dispatch method) from App to FeatureComponent.
 
             import FeatureComponent from './file-path';
             <App>
@@ -205,16 +205,31 @@
               />
             </App>
             
-- 3rd, Extract slice of state and dispatch props
+- 3rd, EXTRACT PROPS: slice of state and dispatch method 
               const MyComponent = ({state, dispatch} or props) => {
                         or const { state, dispatch } = props
                     // MyComponent code
                   }
+##### ONCE FeatureComponent HAS ACCESS TO SLICE OF STATE THE COMPONENT DATA CAN BE RENDERED
+- 4th, RENDER COMPONENT using data from the slice of state
 
-      
-              - Render component using date from the slice of state
-              - Import action creators from slice files
-              - Dispatch action in response to user inputs
+            const featureComponent = (props) =>{
+                    const { sliceOfState, dispatch } = props
+                    return (  <div>
+                                {render slideOfState data here}
+                              </div>
+                          )            
+              }
+##### DISPATCH AN ACTION
+- 5th, IMPORT ACTION CREATORS from sliceReducer files
+
+              import { sliceReducer } from './feature/sliceReducerFolder/sliceReducerFile.js';
+
+- 6th, DISPATCH ACTION with the action creator in response to user inputs
+      - Here the dispatch method has been passed to component so don't need store.dispatch only dispatch
+
+            dispatch(actionCreator(payload));
+
 
 The action.payload property holds data for the reducer to caryy ou an action.</br>
 The spread syntax (...) and array methods (.map(), .slice(), .filter()) are used to immutably update the state of a complex app.</br>
