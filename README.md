@@ -4,14 +4,14 @@
 - A REDUX store is ideal for managing Complex data state (State Management)</br>
 - REDUX: one-way data flow --> State → View → Actions → State → View</br>
 - WHEN designng a store’s state we need:</br>
-      - Action creators describe the state changes</br>
-      - Reducers execute the state changes</br>
-      - Connecting the Redux store to React components.</br>
+      - Action creators describe how to change the state</br>
+      - Reducers functions that modify state</br>
+      - To connect Redux store to React components.</br>
     
 ## Slices 
 #### (defines an Apps Inital State)
-- A Redux slice is a section of the state managed by Redux store. `Slice=StateProperty`
-- Can be data values, array of object, or strings
+- A Redux slice is a property of the state object managed by Redux store. Slice=StateProperty`
+- State objects can be data values, array of object, or strings
   
         const initialState = {                 --> THIS STATE HAS 2 SLICES
               todos:                            ---> SLICE 1
@@ -29,10 +29,10 @@
 ## ACTION CREATORS AND PAYLOADS of COMPLEX STATE 
 #### (define how to change the state)
 `**** Actions creators ****`
-            JS objects with a type property 
+            JS objects with a properties of type and payload 
             Creators are dispatched to the store with store.dispatch() method.
 - Action creators change one slice at a time
-- To clarify which state an actions updates its type pattern =`sliceName/actionDescriptor`
+- Actions update state based on their type pattern =`sliceName/actionDescriptor`
 
               const actionName = (data) {
                     return {                  //ACTION OBJECT
@@ -43,8 +43,8 @@
 
 - ACTIONS CREATORS CAN ALSO HAVE A:
 
-      payload — data passed to the reducer in order to change-of-state
-- For Example an App with a SearchBar can have 2 actions which get dispached to change state whenever a user input in the SearchBar
+      payload — additionsl data passed to the reducer to change the state
+- For Example an App with a SearchBar componenr can have 2 actions which get dispached to change state of that searchbar whenever a user input in the SearchBar
 
 *** 1. If the user enters a searchTerm of Spaghetti  &emsp;  &emsp; &emsp;   *** 2. If the user clears the search field no data sent but an empty string ' '
 
