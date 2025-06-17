@@ -1,21 +1,21 @@
 # REACT-REDUX-For-Complex-State
 
 ## Strategies for Complex State
-- A REDUX store is ideal for managing Complex data state (State Management)
-- REDUX: one-way data flow --> State → View → Actions → State → View
-- WHEN designng a store’s state we need:
-      - Action creators describe the state changes
-      - Reducers execute the state changes
-      - Connecting the Redux store to React components.
+- A REDUX store is ideal for managing Complex data state (State Management)</br>
+- REDUX: one-way data flow --> State → View → Actions → State → View</br>
+- WHEN designng a store’s state we need:</br>
+      - Action creators describe the state changes</br>
+      - Reducers execute the state changes</br>
+      - Connecting the Redux store to React components.</br>
     
 ## Slices 
 #### (defines an Apps Inital State)
-- Top-Level `state properties`      `Slice=StateProperty`
+- A Redux slice is a section of the state managed by Redux store. `Slice=StateProperty`
 - Can be data values, array of object, or strings
   
         const initialState = {                 --> THIS STATE HAS 2 SLICES
               todos:                            ---> SLICE 1
-               [                                ---> ARRAY OF OBJECTS            
+               [                                ---> ARRAY OF OBJECTS         
                     {                            
                       id: 0,
                       text: 'Complete the learn Redux course',
