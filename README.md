@@ -231,7 +231,7 @@
 |The store is passed from (index.js) through the main <App /> component as a prop|
 |store.subscribe(listener_function) accepts a listener|
 |store.dispatch(action) accepts an action and sends the action to the store's reducer|
-|Store Set Up Requires:|
+|***Store Set Up Requires ***|
 |Importing functions createStore(), combineReducers() and rootReducer
 |Importing slice reducers from their feature folders feature/featureSliceName.js name|
 |Then Combine reducers object with combineReducers({...reducersObject})|
