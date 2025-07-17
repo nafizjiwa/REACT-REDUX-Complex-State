@@ -1,4 +1,4 @@
-# REACT-REDUX-Strategy-For-A-Complex-State
+# REACT-REDUX API-Strategy-For-A-Complex-State
 
 ## Intro Strategies for Complex State
 - THE REDUX STORE MANAGES STATE</br>
@@ -11,7 +11,7 @@
 ## Slices 
 #### (defines an Apps Inital State)
 - A Redux slice is a property of the state object managed by Redux store. Slice=StateProperty`
-- Slice includes data values, array of object, or strings
+- Slice includes data, array of object, or strings
   
         const initialState = {                 --> THIS STATE HAS 2 SLICES
               todos:                            ---> SLICE 1
