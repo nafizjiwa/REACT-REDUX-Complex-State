@@ -265,21 +265,21 @@
 |Review Notes|
 |----|
 |store.dispatch(action) - sends the action to the store's reducer|
-|Action Creator are functions that return actions objects|
-|Action objects have 2 props type & payload|
-|Reducers determines how a state changes when it receives an action|
+|Action Creators are functions that return actions objects with 2 props type & payload|
+|Reducers receives an action and changes state|
 |Action.type is the type action Eg.'Add a To Do'|
-|Action.payload is the action the creator carries out. Eg. "Buy groceries"|
-|Spread syntax (...) and array methods (.map(), .slice(), .filter()) are used to immutably update the state of a complex app|
+|Action.payload holds data used by action creator to carry out action. Eg. "Buy groceries"|
+|Spread syntax (...) and array methods (.map(), .slice(), .filter()) immutably update the state|
 |The Reducer composition pattern manages a Redux store with multiple slices|
-|root reducer delegates actions to slice reducers to update their own state in the store then reassembles the slices into a new state object|
+|Root Reducer delegates actions to slice reducers to update their own state in the store then reassembles the slices into a new state object|
 |combineReducers() method accepts all reducer functions and returns a rootReducer|
-|Redux Slice reducers handles actions and updates the data for a given slice|
-|The <App /> component passes the slices of the store’s state to its sub-components|
+|Redux Slice reducers handle actions and updates the data for a given slice|
+|The store is passed from index.js throught to <App/> compnent|
+|The App component passes the slices of the store’s state to its sub-components|
 |“prop drilling” or “prop threading” - props are “threaded” through the top-level component -> presentational components|
-|Redux Toolkit helps avoid “prop threading”|
+|“prop threading” is not ideal so use Redux Toolkit to avoid "prop threading"|
 |When an action is dispatched to the store all subscribed listeners are executed|
-|feature-based pattern - Organize code so each feature (create a todo, cart) has its own folder not organized by types (actions, or components)|
+|feature-based pattern - Organize code so each feature (create a todo, cart) has its own folder|
 
 
 
