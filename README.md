@@ -264,21 +264,23 @@
             }
 |Review Notes|
 |----|
-|store.dispatch(action) accepts an action and sends the action to the store's reducer|
-|Action Creator are functions that create and return actions (an object).. the object has 2 props type & payload|
-|Reducers determines how a state changes based on the action it receives|
-|An action.type is the type action Eg.'Add a To Do'|
-|An action.payload is the action the creator carries out. Eg. "Buy groceries"|
+|store.dispatch(action) - sends the action to the store's reducer|
+|Action Creator are functions that return actions objects|
+|Action objects have 2 props type & payload|
+|Reducers determines how a state changes when it receives an action|
+|Action.type is the type action Eg.'Add a To Do'|
+|Action.payload is the action the creator carries out. Eg. "Buy groceries"|
 |Spread syntax (...) and array methods (.map(), .slice(), .filter()) are used to immutably update the state of a complex app|
 |The Reducer composition pattern manages a Redux store with multiple slices|
 |root reducer delegates actions to slice reducers to update their own state in the store then reassembles the slices into a new state object|
 |combineReducers() method accepts all reducer functions and returns a rootReducer|
 |Redux Slice reducers handles actions and updates the data for a given slice|
 |The <App /> component passes the slices of the store’s state to its sub-components|
-|“prop drilling” or “prop threading” - props are “threaded” through the top-level component -> presentational components.|
-|Redux Toolkit helps avoid “prop threading” |
+|“prop drilling” or “prop threading” - props are “threaded” through the top-level component -> presentational components|
+|Redux Toolkit helps avoid “prop threading”|
 |When an action is dispatched to the store all subscribed listeners are executed|
 |feature-based pattern - Organize code so each feature (create a todo, cart) has its own folder not organized by types (actions, or components)|
+
 
 
 
