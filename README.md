@@ -25,18 +25,25 @@
 
 ## ACTIONS AND PAYLOADS of COMPLEX STATE 
 #### (2nd The State's Slices are known now define how to trigger changes to these slices of state with actions)
-- Actions are dipatched to the store with `store.dispatch()`</br>
+- Actions are dipatched to the store with `store.dispatch(ACTIONobject)`</br>
 - Complex state action object:
+### ACTION OBJECT
+        { 
+            type:'sliceName/actionName,
+            payload: data
+         }  
+- The naming clarifies the slice of state to be updated.</br>
 
         const theActionISaJSobject(actionDescriptor) = {
              type: 'sliceName/actionDescriptor', --> Action types Naming pattern
              payload: 'data= variable, number, string'
           }
-- The naming clarifies the slice of state to be updated.
+  
+
 ### Once the type of actions are determined create action creators for those actions
 `**** Actions creators ****`
             -Functions that return action objects everytime they are called 
-            -Dispatched to the store with store.dispatch(action or action creator).
+            -Dispatched to the store with `store.dispatch(action object or action creator)`.
 
              const actionDescriptorName = (data) {     //Action CREATOR
                    return {                  //returns ACTION OBJECT
@@ -56,17 +63,26 @@
             // The resulting state: { ..., searchTerm: 'Spaghetti' }
 
 ## IMMUTABLE UPDATES 
-#### (Reducers are Functions Which Decide How to Change the State)
-- A Dispatched action calles a REDUCER:</br>
-        1. The Reducers take in AN ACTION AND A CURRENT STATE --> the next state</br>
-        2. Reducers make a copy of the state (don't mutate state)</br>
-              For arrays and objects with mutable data use a spread operator(...)</br>
+#### (3rd Once how the changes to State are defined with actions, create a Reducer to Execute Changes to the State)
+- A store's reducer is called when an action is dipatched
+- REDUCER:</br>
+        1. Takes in an `ACTION` AND A `CURRENT STATE` --> returns `the next state`</br>
+        2. Reducers make a copy of the state (don't mutate state) with a spread operator(...)</br>
+              - To make a copy of state(...state,)</br>
+
+          const sliceNameReducer = (state = initialState, action) => {
+                  switch (action.type) {
+                    case 'sliceName/actionName':
+                      return {  ...state,
+                        sliceName: sliceNames new value = action.payload
+              };
+               
 
 ## REDUCER COMPOSITION
 - For small appications a single reducer can manage every slice of the store's state
-- For large application follow --> Use Reducer Composition
+- For large application follow --> Reducer Composition pattern
 - Multiple slice reducers responsible for updating only one slice/part of the state
-- Multiple Reducers results are recombined by a rootReducer --> A single state object.
+- Results of multiple Reducers are recombined by a rootReducer --> Into a single state object.
   
 |####|REDUCER COMPOSITION PROCESS FOR EACH SLICE REDUCER|
 |-----|-----|
