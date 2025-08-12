@@ -28,27 +28,25 @@
 - Actions are dipatched to the store with `store.dispatch()`</br>
 - Complex state action object:
 
-        const theActionISaJSobject = {
+        const theActionISaJSobject(actionDescriptor) = {
              type: 'sliceName/actionDescriptor', --> Action types Naming pattern
              payload: 'data= variable, number, string'
           }
 - The naming clarifies the slice of state to be updated.
-#### Once the type of actions are determined create action creators for those actions
+### Once the type of actions are determined create action creators for those actions
 `**** Actions creators ****`
             -Functions that return action objects everytime they are called 
             -Dispatched to the store with store.dispatch(action or action creator).
 
              const actionDescriptorName = (data) {     //Action CREATOR
-                   return {                  //ACTION OBJECT
-                         type: 'sliceName/actionName',
-                         payload: data
+                   return {                  //returns ACTION OBJECT
+                         type: 'sliceName/actionDescriptorName',  --> Naming Pattern
+                         payload: data   --> its value changes the state
                    }
              }
 
-- ACTIONS CREATORS CAN ALSO HAVE A:
 
-      payload — additional data passed to the reducer to change the state
-- For Example an App with a SearchBar componenr can have 2 actions which get dispached to change state of that searchbar whenever a user input in the SearchBar
+- For Example an App with a SearchBar component can have 2 actions which get dispached to change state of that searchbar whenever a user input in the SearchBar
 
 *** 1. If the user enters a searchTerm of Spaghetti  &emsp;  &emsp; &emsp;   *** 2. If the user clears the search field no data sent but an empty string ' '
 
