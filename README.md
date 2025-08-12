@@ -8,7 +8,7 @@
       - Reducers functions - To modify the state</br>
       - Connection - Connect the Redux store to React components.</br>
     
-## Slices 
+## SLICES 
 #### (1st Define the store's InitialState consider the # of Slices or features of that state )
 - A Redux: `Slice = THE TOP LEVEL StateProperty` OF THE STATE OBJECT
 - Slice's values: data, array of object, or strings
@@ -27,7 +27,7 @@
 #### (2nd The State's Slices are known now define how to trigger changes to these slices of state with actions)
 - Actions are dipatched to the store with `store.dispatch(ACTIONobject)`</br>
 - Complex state action object:
-### ACTION OBJECT
+#### Action Object
         { 
             type:'sliceName/actionName,
             payload: data
@@ -63,7 +63,7 @@
             // The resulting state: { ..., searchTerm: 'Spaghetti' }
 
 ## IMMUTABLE UPDATES 
-#### (3rd Once how the changes to State are defined with actions, create a Reducer to Execute Changes to the State)
+#### (3rd Once how the changes to State are defined with actions, create a REDUCERS to Execute Changes to the State)
 - A store's reducer is called when an action is dipatched
 - REDUCER:</br>
         1. Takes in an `ACTION` AND A `CURRENT STATE` --> returns `the next state`</br>
@@ -79,12 +79,12 @@
               };
                
 
-## REDUCER COMPOSITION
+## REDUCER COMPOSITION - MULTIPLE SLICE REDUCERS
 - For small appications a single reducer can manage all the store's state
 - For large application follow:
           --> `Reducer Composition pattern`
 - We create individual `Slice Reducers` to update only `one slice` of the `state`
-- The results of all `Slice Reducers` are recombined wtih a `rootReducer` --> Into a single state object.
+- All `Slice Reducers` are recombined with a `rootReducer` --> Into a single state object.
   
 ||HOW THE REDUCER COMPOSITION PATTERN WORKS|
 |-----|-----|
@@ -92,10 +92,15 @@
 |2nd |rootReducer calls each slice reducer|
 ||==> The call passes the action and IT'S OWN slice of state to each `Slice Reducer`|
 | 3rd |EACH REDUCER determines if they need an update or returns state unchanged|
-| 4th |The rootReducer reassembles the updated slices in a new `state object`|
+| 4th |The rootReducer reassembles Slices in a --> `new STATE OBJECT`|
            
   
      *********************************************************
+     import { createStore } from 'redux';
+      *******Create Slices**
+     const initialStateSlice(A) = []
+     const slice(A)Reducer = (initialState, action) => {switch cases for this slice}
+       *******Combine Slices into rootReducer**
      const rootReducer = (state = {}, action) => {
          const nextState = {                                   //ALL SLICE REDUCERS CALLED
                sliceA: sliceAReducer(state.sliceA, action),    //SLICES RECEIVE THEIR
@@ -103,6 +108,8 @@
              }
             return nextState;        //REDUCER RETURNS NEXT STATE
      }
+        *******Create store with rootReducer**
+     const store = createStore(rootReducer)
      **********************************************************
 
 #### ***Switch cases for ADDING OR REMOVING FROM AN ARRAY</br>
@@ -115,29 +122,35 @@
             return arraySliceName1.filter(element=>element.id !== action.payload.id);
      
 
-## combineREDUCERS
-- CombineReducers creates the functions of the rootReducer</br>
-  #### 1.CALLS ALL SLICE REDUCERS WITH THEIR SLICE OF STATE</br>
-  #### 2.STORES THE NEW STATE IN A NEW OBJECT</br>
-  #### 3.RETURNS A NEW STATE</br>
+## combineReducers(reducers) ENABLES THE REDUCER COMPOSITION by RETURNING A rootReducer( )
+
+- CombineReducer accepts a reducer object and returns a rootReducer function of slices.
+#### CombineReducer --> returns an auto generated Root Reducer
+#### &emsp;  &emsp; &emsp; &emsp;  &emsp; --> SO NO NEED TO HARD CODE A REDUCER
     
           const rootReducer = (state = {}, action) => {
-             const nextState = {  2.
-                todos: todosReducer(state.todos, action), 1.
-             };   
-             return nextState  3.
+             const nextState = {  
+                slice(1): slice(1)Reducer(state.slice(1), action), 
+                     };   
+               return nextState  
            };
            const store = createStore(rootReducer);
-- CombineReducers, avoids the manual creation of the rootReducer function
-- CombineReducer accepts the reducers object and returns a rootReducer function which contains each slice state and action
 
-              //REDUCER OBJECT CONTAINS ALL SLICE REDUCERS UPDATING ALL SLICES OF THE STORE'S STATE
-      const reducers = {      2.
-          todos: todosReducer, 1.  //keyName = SliceName: SliceReducerName//
+
+
+#### REDUCER OBJECT -- Contain all Slice Reducers of the store STATE
+
+      const reducers = {      
+          slice(1): slice(1)ReducerName, 
+          //keyName = SliceName: value = sliceReducerName//
       };   
+#### combineReducer(reducerObject as input) --> returns a root reducer show above
+
       const rootReducer = combineReducers(reducers);
+#### STORE object created as rootReducer as createStore's input
+
       const store = createStore(rootReducer);
-         //STORE OBJECT CREATED BY PASSING IN rootREDUCER
+       
   
 ### When an Action is dispatched --> arrives at store --> rootReducer is executed which calls all slice reducers --> the action and slice of state is passed down appropriate slice
 
