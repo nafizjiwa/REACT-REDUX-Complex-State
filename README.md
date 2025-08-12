@@ -80,16 +80,19 @@
                
 
 ## REDUCER COMPOSITION
-- For small appications a single reducer can manage every slice of the store's state
-- For large application follow --> Reducer Composition pattern
-- Multiple slice reducers responsible for updating only one slice/part of the state
-- Results of multiple Reducers are recombined by a rootReducer --> Into a single state object.
+- For small appications a single reducer can manage all the store's state
+- For large application follow:
+          --> `Reducer Composition pattern`
+- We create individual `Slice Reducers` to update only `one slice` of the `state`
+- The results of all `Slice Reducers` are recombined wtih a `rootReducer` --> Into a single state object.
   
-|####|REDUCER COMPOSITION PROCESS FOR EACH SLICE REDUCER|
+|####|REDUCER COMPOSITION PATTERN HOW IT WORKS|
 |-----|-----|
-| ==> |Each called with incoming action and IT'S OWN slice of state|
-| ==> |Then EACH REDUCER determines if they need an update or returns state unchanged|
-| ==> |rootReducer calls all reducers and reassembles the updated slices|
+|1st | Action is dipatched to the store|
+|2nd |rootReducer calls each slice reducer|
+|==>|the call passes the action and IT'S OWN slice of state to each `Slice Reducer`|
+| 3rd |EACH REDUCER determines if they need an update or returns state unchanged|
+| 4th |The rootReducer reassembles the updated slices in a new `state object`|
            
   
      *********************************************************
@@ -104,8 +107,6 @@
 
 ***SWITCH CASES FOR ADDING TO AN ARRAY OR REMOVING FROM AN ARRAY</br>
 - Only the state of the individual slice is needed to change that specific slice</br>
-
-
 
       case 'sliceName1/actionAdd':
             return [...state.sliceName1, action.payload];
