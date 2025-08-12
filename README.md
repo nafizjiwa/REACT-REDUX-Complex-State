@@ -122,9 +122,9 @@
             return arraySliceName1.filter(element=>element.id !== action.payload.id);
      
 
-## combineReducers(reducers) ENABLES THE REDUCER COMPOSITION by RETURNING A rootReducer( )
-
-- CombineReducer accepts a reducer object and returns a rootReducer function of slices.
+## combineReducers() ENABLES THE REDUCER COMPOSITION by RETURNING A rootReducer( )
+- We don't have to create our own rootReducers
+- CombineReducer accepts a reducer object and returns a rootReducer containing all slices.
 #### CombineReducer --> returns an auto generated Root Reducer
 #### &emsp;  &emsp; &emsp; &emsp;  &emsp; --> SO NO NEED TO HARD CODE A REDUCER
     
@@ -135,24 +135,21 @@
                return nextState  
            };
            const store = createStore(rootReducer);
-
-
-
-#### REDUCER OBJECT -- Contain all Slice Reducers of the store STATE
+#### INSTEAD
+#### CREATE a Reducer Object -- Contain all Slice Reducers of the store STATE
 
       const reducers = {      
           slice(1): slice(1)ReducerName, 
           //keyName = SliceName: value = sliceReducerName//
       };   
-#### combineReducer(reducerObject as input) --> returns a root reducer show above
+#### INPUT Object into combineReducer(Object) --> returns a root reducer as above
 
       const rootReducer = combineReducers(reducers);
-#### STORE object created as rootReducer as createStore's input
+#### Then create a STORE object with the rootReducer
 
       const store = createStore(rootReducer);
        
-  
-### When an Action is dispatched --> arrives at store --> rootReducer is executed which calls all slice reducers --> the action and slice of state is passed down appropriate slice
+### When an Action is dispatched --> arrives at store --> rootReducer is executed --> it calls all its slice reducers --> the action and slice of state is passed down to appropriate slices
 
 ## FILE STRUCTURE FOR REDUX
 
