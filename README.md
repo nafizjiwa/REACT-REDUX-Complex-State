@@ -44,11 +44,10 @@
                          payload: data   --> its value changes the state
                    }
              }
+##### Example An App with a SearchBar component
+-  It has 2 types of actions to change the searchbars `State`. The `State` change is based on what the user inputs into the SearchBar
 
-
-- For Example an App with a SearchBar component can have 2 actions which get dispached to change state of that searchbar whenever a user input in the SearchBar
-
-*** 1. If the user enters a searchTerm of Spaghetti  &emsp;  &emsp; &emsp;   *** 2. If the user clears the search field no data sent but an empty string ' '
+*** 1. If the user enters `Spaghetti`  &emsp;  &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp;  &emsp; &emsp;  *** 2. If the user enters an empty string ' '
 
             1. store.dispatch({                                           2. store.dispatch({ 
               type: 'searchTerm/setSearchTerm',                                      type: 'searchTerm/clearSearchTerm' 
