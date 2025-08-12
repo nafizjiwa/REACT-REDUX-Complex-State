@@ -101,12 +101,13 @@
                sliceA: sliceAReducer(state.sliceA, action),    //SLICES RECEIVE THEIR
                sliceB: sliceBReducer(state.sliceB, action)     //OWN SLICE OF STATE VALUES
              }
-            return nextState;  //REDUCER RETURNS NEXT STATE
+            return nextState;        //REDUCER RETURNS NEXT STATE
      }
      **********************************************************
 
-***SWITCH CASES FOR ADDING TO AN ARRAY OR REMOVING FROM AN ARRAY</br>
-- Only the state of the individual slice is needed to change that specific slice</br>
+#### ***Switch cases for ADDING OR REMOVING FROM AN ARRAY</br>
+- Only individual slice's STATE is needed to change that individual slice</br>
+- Returned slice's state match the case's slice name
 
       case 'sliceName1/actionAdd':
             return [...state.sliceName1, action.payload];
