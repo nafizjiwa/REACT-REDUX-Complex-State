@@ -69,6 +69,7 @@
         1. Takes in an `ACTION` AND A `CURRENT STATE` --> returns `the next state`</br>
         2. Reducers make a copy of the state (don't mutate state) with a spread operator(...)</br>
               - To make a copy of state(...state,)</br>
+        3. In the reducer's switch build cases for all defined action types-'sliceName/actionName'
 
           const sliceNameReducer = (state = initialState, action) => {
                   switch (action.type) {
