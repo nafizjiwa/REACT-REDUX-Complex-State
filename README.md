@@ -86,11 +86,11 @@
 - We create individual `Slice Reducers` to update only `one slice` of the `state`
 - The results of all `Slice Reducers` are recombined wtih a `rootReducer` --> Into a single state object.
   
-|####|REDUCER COMPOSITION PATTERN HOW IT WORKS|
+||HOW THE REDUCER COMPOSITION PATTERN WORKS|
 |-----|-----|
 |1st | Action is dipatched to the store|
 |2nd |rootReducer calls each slice reducer|
-|==>|the call passes the action and IT'S OWN slice of state to each `Slice Reducer`|
+||==> The call passes the action and IT'S OWN slice of state to each `Slice Reducer`|
 | 3rd |EACH REDUCER determines if they need an update or returns state unchanged|
 | 4th |The rootReducer reassembles the updated slices in a new `state object`|
            
