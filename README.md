@@ -1,19 +1,20 @@
 # REDUX API-Strategy-For-A-Complex-State
 
 ## Intro Strategies for Complex State
-- THE REDUX STORE MANAGES STATE</br>
-- REDUX: is one-way data flow --> State → View → Actions → State → View</br>
-- To design a store’s state we need:</br>
+- REDUX - porvides a centralized STOREto MANAGE STATE</br>
+        - is one-way data flow --> State → View → Actions → State → View</br>
+- DESIGN a store’s state we need:</br>
       - Action creators - To describe how to change the state</br>
       - Reducers functions - To modify the state</br>
       - Connection - Connect the Redux store to React components.</br>
     
 ## Slices 
-#### (defines an Apps Inital State)
-- A Redux slice is a property of the state object managed by Redux store. Slice=StateProperty`
+#### (defines an Apps Inital State Object)
+- A Redux:
+- `Slice = THE TOP LEVEL StateProperty` OF THE STATE OBJECT
 - Slice includes data, array of object, or strings
   
-        const initialState = {                 --> THIS STATE HAS 2 SLICES
+        const initialState = {         --> THIS STATE OBJECT HAS 2 SLICES
               todos:                            ---> SLICE 1
                [                                ---> ARRAY OF OBJECTS         
                     {                            
@@ -26,8 +27,9 @@
                                                  ---> STRING
             };
 
-## ACTION CREATORS AND PAYLOADS of COMPLEX STATE 
+## ACTIONS AND PAYLOADS of COMPLEX STATE 
 #### (define how to change the state)
+- Actions are js objects with a type property and they are dipatched to the store with `store.dispatch()`
 `**** Actions creators ****`
             JS objects with a properties of type and payload 
             Creators are dispatched to the store with store.dispatch() method.
