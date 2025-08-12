@@ -29,7 +29,8 @@
 
 ## ACTIONS AND PAYLOADS of COMPLEX STATE 
 #### (define how to change the state)
-- Actions are js objects with a type property and they are dipatched to the store with `store.dispatch()`
+- Actions are js objects with a type property and they are dipatched to the store with `store.dispatch()`</br>
+- Action types naming pattern for complex states 'sliceName/actonDescriptor' to clarify slice of state to update.
 `**** Actions creators ****`
             JS objects with a properties of type and payload 
             Creators are dispatched to the store with store.dispatch() method.
