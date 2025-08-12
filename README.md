@@ -9,40 +9,41 @@
       - Connection - Connect the Redux store to React components.</br>
     
 ## Slices 
-#### (defines an Apps Inital State Object)
-- A Redux:
-- `Slice = THE TOP LEVEL StateProperty` OF THE STATE OBJECT
-- Slice includes data, array of object, or strings
+#### (1st Define the store's InitialState consider the # of Slices or features of that state )
+- A Redux: `Slice = THE TOP LEVEL StateProperty` OF THE STATE OBJECT
+- Slice's values: data, array of object, or strings
   
         const initialState = {         --> THIS STATE OBJECT HAS 2 SLICES
               todos:                            ---> SLICE 1
                [                                ---> ARRAY OF OBJECTS         
-                    {                            
-                      id: 0,
+                    { id: 0,                         
                       text: 'Complete the learn Redux course',
-                      isCompleted = false
-                    },
+                      isCompleted = false  },
                 ],
-               visibility: 'SHOW_INCOMPLETE'     ---> SLICE 2
-                                                 ---> STRING
+               visibility: 'SHOW_INCOMPLETE'     ---> SLICE 2 `STRING`
             };
 
 ## ACTIONS AND PAYLOADS of COMPLEX STATE 
-#### (define how to change the state)
-- Actions are js objects with a type property and they are dipatched to the store with `store.dispatch()`</br>
-- Action types naming pattern for complex states 'sliceName/actonDescriptor' to clarify slice of state to update.
-`**** Actions creators ****`
-            JS objects with a properties of type and payload 
-            Creators are dispatched to the store with store.dispatch() method.
-- Action creators change one slice at a time
-- Actions update state based on their type pattern =`sliceName/actionDescriptor`
+#### (2nd The State's Slices are known now define how to trigger changes to these slices of state with actions)
+- Actions are dipatched to the store with `store.dispatch()`</br>
+- Complex state action object:
 
-              const actionName = (data) {
-                    return {                  //ACTION OBJECT
-                          type: 'sliceName/actionName',
-                          payload: data
-                    }
-              }
+        const theActionISaJSobject = {
+             type: 'sliceName/actionDescriptor', --> Action types Naming pattern
+             payload: 'data= variable, number, string'
+          }
+- The naming clarifies the slice of state to be updated.
+#### Once the type of actions are determined create action creators for those actions
+`**** Actions creators ****`
+            -Functions that return action objects everytime they are called 
+            -Dispatched to the store with store.dispatch(action or action creator).
+
+             const actionDescriptorName = (data) {     //Action CREATOR
+                   return {                  //ACTION OBJECT
+                         type: 'sliceName/actionName',
+                         payload: data
+                   }
+             }
 
 - ACTIONS CREATORS CAN ALSO HAVE A:
 
