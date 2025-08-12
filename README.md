@@ -1,4 +1,4 @@
-# REACT-REDUX API-Strategy-For-A-Complex-State
+# REDUX API-Strategy-For-A-Complex-State
 
 ## Intro Strategies for Complex State
 - THE REDUX STORE MANAGES STATE</br>
