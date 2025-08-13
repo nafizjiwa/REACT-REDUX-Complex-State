@@ -169,24 +169,23 @@
             |-- app/
                 |-- store.js
             |-- features/
-                |-- featureA/
-                    |-- featureASlice.js
-                |-- featureB/
-                    |-- featureBSlice.js
+                |-- feature(1)Folder/
+                    |-- feature(1)Slice.js
+               ...etc
 
-- So in the store.js file:
+- In `store.js` file it contains imported slices, `rootreducer`, and `store`:
 
       import { createStore, combineReducers } from 'redux';
 
       // FIRST, IMPORT SLICE REDUCER
-      import { sliceReducerA } from '../featuresFile/sliceAReducer.js';
-      import { sliceReducerB } from '../featuresFile/sliceBReducer.js';
+      import { sliceReducer(1) } from '../featuresFile/slice(1)Reducer.js';
+      import { sliceReducer(2) } from '../featuresFile/slice(2)Reducer.js';
 
       //SECOND, CONSTRUCT THE REDUCERS OBJECT
       const reducers = {
         // Add the slice properties here
-         sliceA: sliceAReducer,
-         sliceB: sliceBReducer   
+         slice(1): slice(1)Reducer,
+         slice(2): slice(2)Reducer,  
       }
 
       //THIRD & FOURTH, PASS REDUCER OBJECT INTO COMBINEREDUCERS THEN CREATE STORE
