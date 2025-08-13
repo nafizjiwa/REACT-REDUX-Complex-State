@@ -219,14 +219,15 @@
 - To subsribe a method use: store.subscribe(FunctionName)
 
      root.render(
-            <App 
-              state={store.getState()}
-              dispatch={store.dispatch}
-            />,
+       <App 
+         state={store.getState()}
+         dispatch={store.dispatch}
+        />,
           )
         }
         render();
      store.subscribe(render).
+  
 ## USING STORE DATA WITHIN FEATURE COMPONENTS
 - State and store.dispatch are passed to <App /> then App passes dispatch method and slices of store's state to feature components `AS PROPS`.
 - JOB OF PRESENTATIONAL COMPONENT IN REDUX:
