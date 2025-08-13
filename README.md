@@ -191,19 +191,20 @@
       const store = createStore(combineReducers(reducers))
   
 ## PASSING STORE DATA THROUGH TOP LEVEL REACT COMPONENT
-- Keep React Component and Slice file's in the same folder.</br>
+- React Components and their Slice file's are kept in the same folder.</br>
+- DATA FLOW -- STORE --> App compnent --> Feature component
 
         |-- features/
                 |-- feature(1)Folder/
                     |-- feature(1)ReactComponent.js --- Renders Data
                     |-- feature(1)Slice.js   --- Manages Data
-- In Redux, DATA passes to feature Components via App.js as props are:</br>
+- In Redux, THE DATA passeD to feature Components via App.js as props are:</br>
             1.The Slices of state (state.sliceName) passed to component to render</br>
               - `<SliceNameComponent state.sliceName />`</br>
             2.The store.dispatch (uses actions to trigger state change)</br>
               - `<Component />` will dispatch setComponent() actions.</br>
 
-#### TO PASS CURRENT STATE AND ITS DISPATCH TO <App />: </br>
+#### TO PASS STORES CURRENT STATE AND ITS DISPATCH TO <App />: </br>
 ##### 1. In index.js file import the store 
 - ./ means 'starting from the directory of this file...' "this file" = index.js.</br>
 
@@ -229,48 +230,48 @@
           store.subscribe(render).
   
 ## USING STORE DATA WITHIN FEATURE COMPONENTS
-- State and store.dispatch are passed to <App /> then App passes dispatch method and slices of store's state to feature components `AS PROPS`.
-- JOB OF PRESENTATIONAL COMPONENT IN REDUX:
+- Data from Stores state and store.dispatch are passed to <App /> then passed to feature components `AS PROPS`.
+- FEATURE COMPONENTS:
             - Render the data of their SLICE OF STATE
             - Dispatch ACTION in response to user interaction 
 
-- 1st, IMPORT feature components to App.js
-  
-            import ../feature/sliceNameFolder/sliceNameFeatureComponent.js
 ##### TO RENDER DATA AND DISPATCH ACTIONS
+- 1st, IMPORT feature components to App.js
 - 2nd, PASS PROPS (slice of state, dispatch method) from App to FeatureComponent.
 
-            import FeatureComponent from './file-path';
-            <App>
-              <FeatureComponent               //PASSING PROPS
-                stateName={sate.stateSliceName} 
-                dispatch={dispatch_method_from_store}
-              />
-            </App>
+        -App.js-file-
+            import FeatureComponent from '../feature/sliceFolder/sliceFeatureComponent.js';
+            export function App(props) {
+              const {state, dispatch} = props;
+              return (
+                      <FeatureComponent               //PASSING PROPS
+                        stateName={state.stateSliceName} 
+                        dispatch={dispatch_method}
+                      /> )
             
-- 3rd, EXTRACT PROPS: slice of state and dispatch method
+- 3rd, EXTRACT PROPS in Feature Component: slice of state and dispatch method
 
-              const MyComponent = ({state, dispatch} or props) => {
-                        or const { state, dispatch } = props
+              const FeatureComponent = ({state, dispatch} or props) => {
+                        or const { sliceOfState, dispatch } = props
                     // MyComponent code
                   }
-##### ONCE FeatureComponent HAS ACCESS TO SLICE OF STATE THE COMPONENT DATA CAN BE RENDERED
+##### NOW Feature Component HAS ACCESS TO SLICE OF STATE THE DATA CAN BE RENDERED
 - 4th, RENDER COMPONENT using data from the slice of state
 
             const featureComponent = (props) =>{
                     const { sliceOfState, dispatch } = props
                     return (  <div>
-                                {render slideOfState data here}
+                                {render JSX slideOfState data here}
                               </div>
                           )            
               }
-##### DISPATCH AN ACTION
-- 5th, IMPORT ACTION CREATORS from sliceReducer files
+##### FEATURE COMPONENT WANTS TO DISPATCH AN ACTION
+- 5th, IMPORT ACTION CREATORS from sliceReducer files to DISPATCH ACTION
 
-              import { sliceReducer } from './feature/sliceReducerFolder/sliceReducerFile.js';
+              import { ACTION CREATOR } from './feature/sliceFolder/sliceReducerFile.js';
 
 - 6th, DISPATCH ACTION with the action creator in response to user inputs
-      - When the dispatch method is passed to a component don't call store.dispatch only dispatch
+      - Dispatch is passed to component don't call store.dispatch only dispatch
 
             dispatch(actionCreator(payload));
 |Review Notes|
