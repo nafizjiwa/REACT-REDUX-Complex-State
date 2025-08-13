@@ -204,11 +204,11 @@
 
 #### TO PASS CURRENT STATE AND ITS DISPATCH TO <App />: </br>
 ###### 1. In index.js file import the store 
-    - ./ means 'starting from the directory of this file...' "this file" = index.js.</br>
+- ./ means 'starting from the directory of this file...' "this file" = index.js.</br>
 
         import store from './store.js'     
 ###### 2. Pass the store's current state to <App /> as a prop = state
-      - To get current state --> store.getState()
+- To get current state --> store.getState()
         
         <App state={get current state of store } />
 ###### 3. Pass the store.dispatch method to <App /> as prop = dispatch
