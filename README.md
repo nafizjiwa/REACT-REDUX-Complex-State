@@ -196,19 +196,16 @@
                 |-- feature(1)Folder/
                     |-- feature(1)ReactComponent.js --- Renders Data
                     |-- feature(1)Slice.js   --- Manages Data
-- React applications, top-level components, like App.js,</br>
-            1. Render Components and </br>
-            2. Pass data down to Components as props.</br>
-- In Redux, the DATA passed to each feature Component from App.js as props is:</br>
-            1.The Slices of state to render
-              - state.sliceName passed to component <SliceNameComponent state.sliceName /></br>
-            2.The store.dispatch (using actions triggers state change)
+- In Redux, DATA passed to feature Components via App.js as props is:</br>
+            1.The Slices of state (state.sliceName) to render passed to component
+              - <SliceNameComponent state.sliceName /></br>
+            2.The store.dispatch (uses actions to trigger state change)
               - <Component /> will dispatch setComponent() actions.</br>
 
   #### TO PASS CURRENT STATE AND ITS DISPATCH TO <App />: </br>
-  1. Import store to the index.js file
-      - ./app/store.js
-      - ./ means 'starting from the directory of this file...' where "this file" is index.js.
+  1.  - ./app/index.js file
+      - Import store from './store.js'     
+      - ./ means 'starting from the directory of this file...' "this file" = index.js.
   2. Pass the store's state to <App /> as a prop state
       - Get current state of store --> store.getState()
       - Render <App /> passing state as a prop
