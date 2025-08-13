@@ -132,12 +132,12 @@
 #### --> SO NO NEED TO CODE FOR A REDUCER
 #### --> Previous hard coded rootReducer:
     
-          const rootReducer = (state = {}, action) => {
-             const nextState = {  
-                slice(1): slice(1)Reducer(state.slice(1), action), 
-                     };   
-               return nextState  
-           };
+      const rootReducer = (state = {}, action) => {
+         const nextState = {  
+            slice(1): slice(1)Reducer(state.slice(1), action), 
+                 };   
+           return nextState  
+       };
            const store = createStore(rootReducer);
 #### INSTEAD now the combineReducer generates the above rootReducer
 #### CREATE a Reducer Object -- Contain all Slice Reducers of the store STATE
@@ -161,7 +161,6 @@
                 }));
 
 ## FILE STRUCTURE FOR REDUX
-
 - For each state put its action creators and slice reducer in its own sub file which can be imported into the store.js
 
             src/
@@ -173,7 +172,7 @@
                     |-- feature(1)Slice.js
                ...etc
 
-- In `store.js` file it contains imported slices, `rootreducer`, and `store`:
+- The `store.js` file contains the imported slices, `rootreducer`, and `store`:
 
       import { createStore, combineReducers } from 'redux';
 
@@ -192,16 +191,18 @@
       const store = createStore(combineReducers(reducers))
   
 ## PASSING STORE DATA THROUGH TOP LEVEL REACT COMPONENT
-- React Components and their Slice file's should be kept in the same folder.</br>
-      - React Component renders the data</br>
-      - Slice files manages the data</br>
+- Keep React Component and Slice file's in the same folder.</br>
+        |-- features/
+                |-- feature(1)Folder/
+                    |-- feature(1)ReactComponent.js --- Renders Data
+                    |-- feature(1)Slice.js   --- Manages Data
 - React applications, top-level components, like App.js,</br>
             1. Render Components and </br>
             2. Pass data down to Components as props.</br>
-- Redux Applications, the data is passed to feature Component as:</br>
-            1.The Slices of store states to render
-              - state.sliceName can be passed to <SliceNameComponent /></br>
-            2.The store.dispatch method to trigger state changes with actions
+- In Redux, the DATA passed to each feature Component from App.js as props is:</br>
+            1.The Slices of state to render
+              - state.sliceName passed to component <SliceNameComponent state.sliceName /></br>
+            2.The store.dispatch (using actions triggers state change)
               - <Component /> will dispatch setComponent() actions.</br>
 
   #### TO PASS CURRENT STATE AND ITS DISPATCH TO <App />: </br>
