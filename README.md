@@ -202,19 +202,19 @@
             2.The store.dispatch (uses actions to trigger state change)
               - <Component /> will dispatch setComponent() actions.</br>
 
-  #### TO PASS CURRENT STATE AND ITS DISPATCH TO <App />: </br>
-  1.  - In index.js file import store
-      - ./ means 'starting from the directory of this file...' "this file" = index.js.
+#### TO PASS CURRENT STATE AND ITS DISPATCH TO <App />: </br>
+###### 1. In index.js file import the store 
+    - ./ means 'starting from the directory of this file...' "this file" = index.js.</br>
 
         import store from './store.js'     
-  2. Pass the store's current state to <App /> as a prop = state
+###### 2. Pass the store's current state to <App /> as a prop = state
       - To get current state --> store.getState()
         
         <App state={get current state of store } />
-  3. Pass the store.dispatch method to <App /> as prop = dispatch
+###### 3. Pass the store.dispatch method to <App /> as prop = dispatch
   
         <App dispatch={store.dispatch} /> not store.dispatch()
-  4. Subscribe Apps render() function to the store so store changes cause <App /> to re-render
+###### 4. Subscribe Apps render() function to the store so store changes cause <App /> to re-render
        - To subsribe a method use: store.subscribe(FunctionName)
 
      root.render(
