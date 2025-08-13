@@ -277,7 +277,6 @@
 |Review Notes|
 |----|
 |***To Build a React-Redux Application with multiple slices of state***|
-
 |store.dispatch(action) - dispatches the action to the store's reducer|
 |Action Creators are functions that return actions objects with 2 props type & payload|
 |Reducers receives an action and changes state|
@@ -294,27 +293,22 @@
 |where the store is passed from the entry file index.js|
 |to <App stateProp='store passed as prop' /> component|
 |<App /> component then passes the slices of the store's stae to sub components|
-|prop drilling not ideal the Redux toolkit helps avoid |
+|prop drilling not ideal the Redux toolkit helps avoid drilling |
 |----|
-|***Store Set Up Requires***|
-|Importing functions createStore(), combineReducers() and rootReducer
+|***To Set Up a Store Requires***|
+|Import the functions createStore(), combineReducers() and rootReducer|
 |Importing slice reducers from their feature folders feature/featureSliceName.js name|
-|Then Combine reducers object with combineReducers({...reducersObject})|
+|Create a reducers object of all slice reducers using combineReducers({...reducersObject})|
 |CombineReducer returns a rootReducer function with each slice state and action|
-|Reducer object contains all slices and their reducer|
-|Next, create a store using combineReducers (contains all the slice of states)|
-|export const store = createStore(combineReducers({
-  sliceA: sliceAReducer, sliceB: sliceBReducer,}));|
+|Next, create a store of combineReducers(slices of the state)|
+|export the store as const store = |
+|= createStore(combineReducers({ slice(1): slice(1)Reducer, slice(2): slice(2)Reducer,}));|
 |***Connect Redux Store to React Component App***|
-|To pass store from (index.js) to main <App /> component as a prop|
-|import { store } from './app/store.js'|
+|Pass the store from (index.js) to main <App state={store.getState()}/> component as a prop|
+|import { store } from './app/store.js' to index.js|
 |***Pass data down to presentational component***|
-|Pass store to Presentational Components|
-|What is Passed? Current State and dispatch Method|
-|\<App currentState={store.getState} dispatch={store.dispatch}/>|
+|\<App currentState={store.getState} dispatch={store.dispatch}/> --> then to components|
 |***When States change the component needs to re-render with most up-dated data***|
 |Subscribe render or render function to changes to the state of the store|
 |store.subscribe(listener_function) accepts a listener|
 |store.subscribe(render) listens when state has changed and updates its data|
-|App.js renders all slices of state and their dispatch methods as above: Eg.|
-|-------------------------------------------------------------------------------------------------------------------------------------------------------|
