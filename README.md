@@ -123,10 +123,9 @@
      
 
 ## combineReducers() ENABLES THE REDUCER COMPOSITION by RETURNING A rootReducer( )
-- We don't have to create our own rootReducers
 - CombineReducer accepts a reducer object and returns a rootReducer containing all slices.
 #### CombineReducer --> returns an auto generated Root Reducer
-#### &emsp;  &emsp; &emsp; &emsp;  &emsp; --> SO NO NEED TO HARD CODE A REDUCER
+#### &emsp;  &emsp; &emsp; &emsp;  &emsp; --> SO NO NEED TO CODE FOR A REDUCER
     
           const rootReducer = (state = {}, action) => {
              const nextState = {  
@@ -148,8 +147,13 @@
 #### Then create a STORE object with the rootReducer
 
       const store = createStore(rootReducer);
-       
-### When an Action is dispatched --> arrives at store --> rootReducer is executed --> it calls all its slice reducers --> the action and slice of state is passed down to appropriate slices
+#### ALL THIS CAN BE CONDENSED INTO:
+
+      import { createStore, combineReducer } from 'redux';
+      const store = createStore(combineReducers({
+                    slice(1): slice(1)Reducer,
+                    slice(2): slice(2)Reducer
+                }));
 
 ## FILE STRUCTURE FOR REDUX
 
