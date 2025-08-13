@@ -216,7 +216,7 @@
 ##### 3. Pass the store.dispatch method to <App /> as a prop = dispatch
 - Don't pass function call store.dispatch().
  
-        <App dispatch={store.dispatch} /> not store.dispatch()
+        <App dispatch={store.dispatch} /> -- NOT store.dispatch()
 ##### 4. Subscribe Apps render() function to the store so store changes cause <App /> to re-render
 - To subsribe a method use: store.subscribe(FunctionName)
 
@@ -276,6 +276,26 @@
             dispatch(actionCreator(payload));
 |Review Notes|
 |----|
+|***To Build a React-Redux Application with multiple slices of state***|
+
+|store.dispatch(action) - dispatches the action to the store's reducer|
+|Action Creators are functions that return actions objects with 2 props type & payload|
+|Reducers receives an action and changes state|
+|Action.type is the type action need changed Eg.'Add a To Do'|
+|Action.payload holds data eeded by Reducer to complete action. Eg. "Buy groceries"|
+|Methods to immutably update state -- .map( ), .slice( ), .filter( )|
+|Reducer Composition is a pattern to manage a Redux store with multiple slcies|
+|rootReducer delegates actions to its slice reducers|
+|SliceReducers update their slice's of the store state|
+|rootReducer reassembles slice into new object|
+|Redux library's combineReducers() accepts reducers functions and returns a root reducer|
+|'prop drilling' or 'prop threading'|
+|props are threaded from top-level component--> to presentational component|
+|where the store is passed from the entry file index.js|
+|to <App stateProp='store passed as prop' /> component|
+|<App /> component then passes the slices of the store's stae to sub components|
+|prop drilling not ideal the Redux toolkit helps avoid |
+|----|
 |***Store Set Up Requires***|
 |Importing functions createStore(), combineReducers() and rootReducer
 |Importing slice reducers from their feature folders feature/featureSliceName.js name|
@@ -298,39 +318,3 @@
 |store.subscribe(render) listens when state has changed and updates its data|
 |App.js renders all slices of state and their dispatch methods as above: Eg.|
 |-------------------------------------------------------------------------------------------------------------------------------------------------------|
- 
-            Import slice Component thenRender Component
-            const App = (props) => {
-                  const { state, dispatch } = props; 
-                         return (
-                               <RenderedSliceNameComponent      
-                                    sliceName={state.sliceName}
-                                    otherSlice= {state.otherSlice}
-                                    dispatch={dispatch}
-                                    />
-                        )
-            }
-|Review Notes|
-|----|
-|store.dispatch(action) - sends the action to the store's reducer|
-|Action Creators are functions that return actions objects with 2 props type & payload|
-|Reducers receives an action and changes state|
-|Action.type is the type action Eg.'Add a To Do'|
-|Action.payload holds data used by action creator to carry out action. Eg. "Buy groceries"|
-|Spread syntax (...) and array methods (.map(), .slice(), .filter()) immutably update the state|
-|The Reducer composition pattern manages a Redux store with multiple slices|
-|Root Reducer delegates actions to slice reducers to update their own state in the store then reassembles the slices into a new state object|
-|combineReducers() method accepts all reducer functions and returns a rootReducer|
-|Redux Slice reducers handle actions and updates the data for a given slice|
-|The store is passed from index.js throught to <App/> compnent|
-|The App component passes the slices of the store’s state to its sub-components|
-|“prop drilling” or “prop threading” - props are “threaded” through the top-level component -> presentational components|
-|“prop threading” is not ideal so use Redux Toolkit to avoid "prop threading"|
-|When an action is dispatched to the store all subscribed listeners are executed|
-|feature-based pattern - Organize code so each feature (create a todo, cart) has its own folder|
-
-
-
-
-
- 
