@@ -192,14 +192,15 @@
   
 ## PASSING STORE DATA THROUGH TOP LEVEL REACT COMPONENT
 - Keep React Component and Slice file's in the same folder.</br>
+
         |-- features/
                 |-- feature(1)Folder/
                     |-- feature(1)ReactComponent.js --- Renders Data
                     |-- feature(1)Slice.js   --- Manages Data
-- In Redux, DATA passed to feature Components via App.js as props is:</br>
-            1.The Slices of state (state.sliceName) to render passed to component
+- In Redux, DATA passes to feature Components via App.js as props are:</br>
+            1.The Slices of state (state.sliceName) passed to component to render</br>
               - <SliceNameComponent state.sliceName /></br>
-            2.The store.dispatch (uses actions to trigger state change)
+            2.The store.dispatch (uses actions to trigger state change)</br>
               - <Component /> will dispatch setComponent() actions.</br>
 
 #### TO PASS CURRENT STATE AND ITS DISPATCH TO <App />: </br>
