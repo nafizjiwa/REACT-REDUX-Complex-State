@@ -212,21 +212,20 @@
         
         <App state={get current state of store } />
 ##### 3. Pass the store.dispatch method to <App /> as a prop = dispatch
-- Don't pass function call store.dispatc()
+- Don't pass function call store.dispatch().
  
         <App dispatch={store.dispatch} /> not store.dispatch()
 ##### 4. Subscribe Apps render() function to the store so store changes cause <App /> to re-render
 - To subsribe a method use: store.subscribe(FunctionName)
 
-     root.render(
-       <App 
-         state={store.getState()}
-         dispatch={store.dispatch}
-        />,
-          )
-        }
-        render();
-     store.subscribe(render).
+         const render = () => {
+             root.render(
+                 <App  state={store.getState()}
+                       dispatch={store.dispatch}
+                  />, )
+               }
+             render();
+          store.subscribe(render).
   
 ## USING STORE DATA WITHIN FEATURE COMPONENTS
 - State and store.dispatch are passed to <App /> then App passes dispatch method and slices of store's state to feature components `AS PROPS`.
