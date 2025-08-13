@@ -203,20 +203,29 @@
               - <Component /> will dispatch setComponent() actions.</br>
 
   #### TO PASS CURRENT STATE AND ITS DISPATCH TO <App />: </br>
-  1.  - ./app/index.js file
-      - Import store from './store.js'     
+  1.  - In index.js file import store
       - ./ means 'starting from the directory of this file...' "this file" = index.js.
-  2. Pass the store's state to <App /> as a prop state
-      - Get current state of store --> store.getState()
-      - Render <App /> passing state as a prop
-      - <App state={get current state of store } />
-  3. For App to render App needs a dispatch method
-      - Pass store.dispatch to <App /> as prop dispatch
-            <App dispatch={store.dispatch} /> not store.dispatch()
-  4. Subscribe the render function to changes to the store so the whole <App /> component can re-renders whenever changes in the store occcur.
-       - To subsribe a method to changes to the store: store.subscribe(FunctionName)
-       - --> store.subscribe(renderfunction).
 
+        import store from './store.js'     
+  2. Pass the store's current state to <App /> as a prop = state
+      - To get current state --> store.getState()
+        
+        <App state={get current state of store } />
+  3. Pass the store.dispatch method to <App /> as prop = dispatch
+  
+        <App dispatch={store.dispatch} /> not store.dispatch()
+  4. Subscribe Apps render() function to the store so store changes cause <App /> to re-render
+       - To subsribe a method use: store.subscribe(FunctionName)
+
+     root.render(
+            <App 
+              state={store.getState()}
+              dispatch={store.dispatch}
+            />,
+          )
+        }
+        render();
+     store.subscribe(render).
 ## USING STORE DATA WITHIN FEATURE COMPONENTS
 - State and store.dispatch are passed to <App /> then App passes dispatch method and slices of store's state to feature components `AS PROPS`.
 - JOB OF PRESENTATIONAL COMPONENT IN REDUX:
