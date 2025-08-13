@@ -127,10 +127,10 @@
 
 ## combineReducers() FUNCTION ENABLES THE REDUCER COMPOSITION by RETURNING A rootReducer( )
 
-#### CombineReducers(accepts a reducer object)
-#### --> Returns an auto generated Root Reducer contain all the slices
-#### --> SO NO NEED TO CODE FOR A REDUCER
-#### --> Previous hard coded rootReducer:
+##### CombineReducers(accepts a reducer object)
+##### --> Returns an auto generated Root Reducer contain all the slices
+##### --> SO NO NEED TO CODE FOR A REDUCER
+##### --> Previous hard coded rootReducer:
     
       const rootReducer = (state = {}, action) => {
          const nextState = {  
@@ -139,7 +139,7 @@
            return nextState  
        };
            const store = createStore(rootReducer);
-#### INSTEAD now the combineReducer generates the above rootReducer
+#### INSTEAD NOW USE the combineReducer to Generate a rootReducer
 #### CREATE a Reducer Object -- Contain all Slice Reducers of the store STATE
 
       const reducers = {      
