@@ -97,9 +97,11 @@
   
      *********************************************************
      import { createStore } from 'redux';
+     
       *******Create Slices**
      const initialStateSlice(A) = []
      const slice(A)Reducer = (initialState, action) => {switch cases for this slice}
+     
        *******Combine Slices into rootReducer**
      const rootReducer = (state = {}, action) => {
          const nextState = {                                   //ALL SLICE REDUCERS CALLED
@@ -108,6 +110,7 @@
              }
             return nextState;        //REDUCER RETURNS NEXT STATE
      }
+     
         *******Create store with rootReducer**
      const store = createStore(rootReducer)
      **********************************************************
@@ -122,10 +125,12 @@
             return arraySliceName1.filter(element=>element.id !== action.payload.id);
      
 
-## combineReducers() ENABLES THE REDUCER COMPOSITION by RETURNING A rootReducer( )
-- CombineReducer accepts a reducer object and returns a rootReducer containing all slices.
-#### CombineReducer --> returns an auto generated Root Reducer
-#### &emsp;  &emsp; &emsp; &emsp;  &emsp; --> SO NO NEED TO CODE FOR A REDUCER
+## combineReducers() FUNCTION ENABLES THE REDUCER COMPOSITION by RETURNING A rootReducer( )
+
+#### CombineReducers(accepts a reducer object)
+#### --> Returns an auto generated Root Reducer contain all the slices
+#### --> SO NO NEED TO CODE FOR A REDUCER
+#### --> Previous hard coded rootReducer:
     
           const rootReducer = (state = {}, action) => {
              const nextState = {  
@@ -134,7 +139,7 @@
                return nextState  
            };
            const store = createStore(rootReducer);
-#### INSTEAD
+#### INSTEAD now the combineReducer generates the above rootReducer
 #### CREATE a Reducer Object -- Contain all Slice Reducers of the store STATE
 
       const reducers = {      
