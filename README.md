@@ -294,21 +294,23 @@
 |to <App stateProp='store passed as prop' /> component|
 |<App /> component then passes the slices of the store's stae to sub components|
 |prop drilling not ideal the Redux toolkit helps avoid drilling |
-|----|
-|***To Set Up a Store Requires***|
-|Import the functions createStore(), combineReducers() and rootReducer|
-|Importing slice reducers from their feature folders feature/featureSliceName.js name|
-|Create a reducers object of all slice reducers using combineReducers({...reducersObject})|
-|CombineReducer returns a rootReducer function with each slice state and action|
-|Next, create a store of combineReducers(slices of the state)|
-|export the store as const store = |
-|= createStore(combineReducers({ slice(1): slice(1)Reducer, slice(2): slice(2)Reducer,}));|
-|***Connect Redux Store to React Component App***|
-|Pass the store from (index.js) to main <App state={store.getState()}/> component as a prop|
-|import { store } from './app/store.js' to index.js|
-|***Pass data down to presentational component***|
-|\<App currentState={store.getState} dispatch={store.dispatch}/> --> then to components|
-|***When States change the component needs to re-render with most up-dated data***|
-|Subscribe render or render function to changes to the state of the store|
-|store.subscribe(listener_function) accepts a listener|
-|store.subscribe(render) listens when state has changed and updates its data|
+
+
+||***To Set Up a Store Requires***|
+|----|----|
+||Import the functions createStore(), combineReducers() and rootReducer|
+||Importing slice reducers from their feature folders feature/featureSliceName.js name|
+||Create a reducers object of all slice reducers using combineReducers({...reducersObject})|
+||CombineReducer returns a rootReducer function with each slice state and action|
+||Next, create a store of combineReducers(slices of the state)|
+||export the store as const store = |
+||= createStore(combineReducers({ slice(1): slice(1)Reducer, slice(2): slice(2)Reducer,}));|
+||***Connect Redux Store to React Component App***|
+||Pass the store from (index.js) to main <App state={store.getState()}/> component as a prop|
+||import { store } from './app/store.js' to index.js|
+||***Pass data down to presentational component***|
+||<App currentState={store.getState} dispatch={store.dispatch}/> --> then to components|
+||***When States change the component needs to re-render with most up-dated data***|
+||Subscribe render or render function to changes to the state of the store|
+||store.subscribe(listener_function) accepts a listener|
+||store.subscribe(render) listens when state has changed and updates its data|
